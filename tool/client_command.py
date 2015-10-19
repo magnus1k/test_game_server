@@ -27,6 +27,7 @@ if __name__ == '__main__':
 
     client = socket(AF_INET, SOCK_STREAM)  # 创建socket，TCP
     client.connect(ADDR)  # 连接服务器
-    client.sendall(send_data('hello server', 1))  # 发送数据给服务器
-    while True:
-        pass
+    client.sendall(send_data('Hello Server', 1))  # 发送数据给服务器
+    client.sendall(send_data('Bye Server', 2))  # 发送数据给服务器
+    # while True:
+    #     pass
