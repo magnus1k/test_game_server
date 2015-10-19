@@ -18,4 +18,4 @@ def echo_2(_conn, data):
 @netserviceHandle
 def run_3(_conn, data):
     print (data, "Between Server")
-    return data
+    return "Hello Client"

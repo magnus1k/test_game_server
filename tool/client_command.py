@@ -20,6 +20,18 @@ def send_data(sendstr, command_id):
     senddata = data + sendstr
     return senddata
 
+
+def resolve_recvdata(data):
+    # 解析头部信息
+    head = struct.unpack('!sssss3I', data[:17])
+    # 获取数据的长度
+    lenght = head[6]
+    # 截取数据内容
+    data = data[17:17+lenght]
+    print data
+    return data
+
+
 if __name__ == '__main__':
     HOST = "magnus1k.com"  # 服务端地址
     PORT = 1000  # 服务端端口
@@ -30,5 +42,11 @@ if __name__ == '__main__':
     client.sendall(send_data('Hello Server', 1))  # 发送数据给服务器
     client.sendall(send_data('Bye Server', 2))  # 发送数据给服务器
     client.sendall(send_data('From Server', 3))  # 发送数据给服务器
-    # while True:
-    #     pass
+    client.close()
+    while True:
+        try:
+            buf = client.recv(2048)  # 接收数据
+            resolve_recvdata(buf)
+            break
+        except socket.error, e:
+            print 'Error receiving data:%s' % e
