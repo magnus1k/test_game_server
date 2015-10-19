@@ -5,7 +5,7 @@ import time
 from socket import AF_INET, SOCK_STREAM, socket
 from thread import start_new
 import struct
-HOST = 'localhost'
+HOST = 'magnus1k.com'
 PORT = 1000
 BUFSIZE = 1024
 ADDR = (HOST, PORT)
