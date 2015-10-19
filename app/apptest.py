@@ -13,3 +13,9 @@ def echo_1(_conn, data):
 def echo_2(_conn, data):
     print (data, "Off Server")
     return data
+
+
+@netserviceHandle
+def run_3(_conn, data):
+    print (data, "Between Server")
+    return data

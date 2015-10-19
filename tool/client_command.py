@@ -29,5 +29,6 @@ if __name__ == '__main__':
     client.connect(ADDR)  # 连接服务器
     client.sendall(send_data('Hello Server', 1))  # 发送数据给服务器
     client.sendall(send_data('Bye Server', 2))  # 发送数据给服务器
+    client.sendall(send_data('From Server', 3))  # 发送数据给服务器
     # while True:
     #     pass
