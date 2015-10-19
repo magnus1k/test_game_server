@@ -1,7 +1,7 @@
 # coding:utf8
 
 
-from socket import AF_INET, SOCK_STREAM, socket
+from socket import AF_INET, SOCK_STREAM, socket, error
 import struct
 
 
@@ -42,11 +42,12 @@ if __name__ == '__main__':
     client.sendall(send_data('Hello Server', 1))  # 发送数据给服务器
     client.sendall(send_data('Bye Server', 2))  # 发送数据给服务器
     client.sendall(send_data('From Server', 3))  # 发送数据给服务器
-    client.close()
     while True:
         try:
             buf = client.recv(2048)  # 接收数据
             resolve_recvdata(buf)
             break
-        except socket.error, e:
+        except error, e:
             print 'Error receiving data:%s' % e
+            break
+    client.close()
